@@ -1,2 +1,2 @@
 # Informatikai-Projekt-feladat
-Ez egy Informatikai projekt feladat. Egyenlőre nem több és nem kevesebb 
+Ez egy Informatikai projekt feladat és egy filmajánló programot szeretnénk létrehozni.
