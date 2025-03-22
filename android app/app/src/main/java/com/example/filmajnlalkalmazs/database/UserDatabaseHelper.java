@@ -1,4 +1,4 @@
-package com.example.filmajnl.database;
+package com.example.filmajnlalkalmazs.database;
 
 import android.content.ContentValues;
 import android.content.Context;
