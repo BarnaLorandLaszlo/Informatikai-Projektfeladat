@@ -12,7 +12,17 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "user_database.db";
     private static final int DATABASE_VERSION = 1;
 
-    // Felhasználók tábla
+    // Kedvencek tábla
+    private static final String TABLE_FAVORITES = "favorites";
+    private static final String CREATE_TABLE_FAVORITES =
+            "CREATE TABLE " + TABLE_FAVORITES + " (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "user_id INTEGER, " +
+                    "movie_id INTEGER, " +
+                    "added_at DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+                    "FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE)";
+    // Felhasználók táblac
+
     private static final String TABLE_USERS = "users";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_USERNAME = "username";
@@ -43,6 +53,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USERS);
+        db.execSQL(CREATE_TABLE_FAVORITES);
     }
 
     @Override
@@ -78,6 +89,14 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllUsers() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_USERS, null);
+    }
+    public long addFavorite(int userId, int movieId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("user_id", userId);
+        values.put("movie_id", movieId);
+        // added_at automatikusan a jelenlegi idő lesz
+        return db.insert(TABLE_FAVORITES, null, values);
     }
 }
 

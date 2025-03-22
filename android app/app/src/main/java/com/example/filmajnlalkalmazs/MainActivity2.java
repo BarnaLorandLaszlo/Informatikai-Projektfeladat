@@ -18,6 +18,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import android.content.Intent;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,12 +58,18 @@ public class MainActivity2 extends AppCompatActivity {
         tvReleaseDate = findViewById(R.id.tvReleaseDate);
         tvRating = findViewById(R.id.tvRating);
         ivPoster = findViewById(R.id.ivPoster);
+        Button btnBack = findViewById(R.id.btnBack);
 
         btnSearch.setOnClickListener(v -> {
             String title = etMovie.getText().toString().trim();
             if (!title.isEmpty()) {
                 fetchMovieData(title);
             }
+        });
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity2.this, NavigationActivity.class);
+            startActivity(intent);
+            finish(); // opcionális, ha nem akarod, hogy vissza lehessen jönni a back gombbal
         });
     }
 
