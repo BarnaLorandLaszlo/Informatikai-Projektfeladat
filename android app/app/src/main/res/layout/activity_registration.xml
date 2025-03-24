@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F1F1"
     tools:context=".RegistrationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,18 +17,52 @@
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <FrameLayout
+            android:id="@+id/my_frame"
+            android:layout_width="330dp"
+            android:layout_height="661dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/button_container_bg"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </FrameLayout>
+
         <Button
-            android:id="@+id/button"
+            android:id="@+id/RegistrationB"
+            android:layout_width="114dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/text_field_background"
+            android:text="Registration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PasswordText" />
+
+        <EditText
+            android:id="@+id/PasswordText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="540dp" />
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DateText" />
 
         <TextView
             android:id="@+id/FirstNameView"
@@ -41,55 +76,139 @@
             android:id="@+id/FirstNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
             android:ems="10"
+            android:hint="Von"
             android:inputType="text"
-            android:text="First Name"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="125dp" />
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/EmailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:ems="10"
-            android:inputType="textPassword"
-            tools:layout_editor_absoluteX="57dp"
-            tools:layout_editor_absoluteY="342dp" />
-
-        <EditText
-            android:id="@+id/editTextTextEmailAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
+            android:hint="example@example.com"
             android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="80dp"
-            tools:layout_editor_absoluteY="408dp" />
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
 
         <EditText
             android:id="@+id/editTextPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:ems="10"
+            android:hint="06301112233"
             android:inputType="phone"
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="469dp" />
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EmailText" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/LastNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:ems="10"
+            android:hint="John"
             android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="216dp" />
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FirstNameText" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/LastNameView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/editTextText2"
-            app:layout_constraintStart_toStartOf="@+id/editTextText2" />
+            android:text="Last Name"
+            app:layout_constraintBottom_toTopOf="@+id/LastNameText"
+            app:layout_constraintStart_toStartOf="@+id/LastNameText" />
+
+        <EditText
+            android:id="@+id/editTextText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="MonkeyDuck"
+            android:inputType="text"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LastNameText" />
+
+        <TextView
+            android:id="@+id/FelhasznalonevView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            app:layout_constraintBottom_toTopOf="@+id/editTextText3"
+            app:layout_constraintStart_toStartOf="@+id/editTextText3" />
+
+        <TextView
+            android:id="@+id/EmailView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Address"
+            app:layout_constraintBottom_toTopOf="@+id/EmailText"
+            app:layout_constraintStart_toStartOf="@+id/EmailText" />
+
+        <TextView
+            android:id="@+id/PhoneView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+            app:layout_constraintStart_toStartOf="@+id/editTextPhone" />
+
+        <EditText
+            android:id="@+id/DateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Date of Birth"
+            android:inputType="date"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+        <TextView
+            android:id="@+id/DateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth"
+            app:layout_constraintBottom_toTopOf="@+id/DateText"
+            app:layout_constraintStart_toStartOf="@+id/DateText" />
+
+        <TextView
+            android:id="@+id/PasswordView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            app:layout_constraintBottom_toTopOf="@+id/PasswordText"
+            app:layout_constraintStart_toStartOf="@+id/PasswordText" />
+
+        <TextView
+            android:id="@+id/AlreadyA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Already have an account?"
+            android:textColor="#2196F3"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RegistrationB" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
