@@ -1,6 +1,9 @@
 package com.example.filmajnlalkalmazs;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +21,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.example.filmajnlalkalmazs.database.UserDatabaseHelper;
+
 import android.content.Intent;
+import android.widget.Toast;
 
 
 import org.json.JSONArray;
@@ -31,7 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
     Button btnSearch;
     TextView tvTitle, tvOverview, tvReleaseDate, tvRating;
     ImageView ivPoster;
-
+    private int currentMovieId = -1;
     private final String API_KEY = "c412675515f5ce72a5bbbd49cec4c943";
 
     @Override
@@ -40,6 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main2);
 
+        UserDatabaseHelper dbHelper = new UserDatabaseHelper(this);
         // EdgeToEdge padding
         View rootView = findViewById(R.id.main); // FONTOS: root layout ID legyen "main"
         if (rootView != null) {
@@ -58,7 +65,86 @@ public class MainActivity2 extends AppCompatActivity {
         tvReleaseDate = findViewById(R.id.tvReleaseDate);
         tvRating = findViewById(R.id.tvRating);
         ivPoster = findViewById(R.id.ivPoster);
+        Button btnSave = findViewById(R.id.btnSave);
         Button btnBack = findViewById(R.id.btnBack);
+        ImageView star1 = findViewById(R.id.star1);
+        ImageView star2 = findViewById(R.id.star2);
+        ImageView star3 = findViewById(R.id.star3);
+        ImageView star4 = findViewById(R.id.star4);
+        ImageView star5 = findViewById(R.id.star5);
+        ImageView heart = findViewById(R.id.heart);
+
+        star1.setOnClickListener(v -> {
+            star1.setImageResource(R.drawable.ye_star);
+            star2.setImageResource(R.drawable.black_star);
+            star3.setImageResource(R.drawable.black_star);
+            star4.setImageResource(R.drawable.black_star);
+            star5.setImageResource(R.drawable.black_star);
+
+        });
+        star2.setOnClickListener(v -> {
+            star1.setImageResource(R.drawable.ye_star);
+            star2.setImageResource(R.drawable.ye_star);
+            star3.setImageResource(R.drawable.black_star);
+            star4.setImageResource(R.drawable.black_star);
+            star5.setImageResource(R.drawable.black_star);
+
+        });
+        star3.setOnClickListener(v -> {
+            star1.setImageResource(R.drawable.ye_star);
+            star2.setImageResource(R.drawable.ye_star);
+            star3.setImageResource(R.drawable.ye_star);
+            star4.setImageResource(R.drawable.black_star);
+            star5.setImageResource(R.drawable.black_star);
+
+        });
+        star4.setOnClickListener(v -> {
+            star1.setImageResource(R.drawable.ye_star);
+            star2.setImageResource(R.drawable.ye_star);
+            star3.setImageResource(R.drawable.ye_star);
+            star4.setImageResource(R.drawable.ye_star);
+            star5.setImageResource(R.drawable.black_star);
+
+        });
+        star5.setOnClickListener(v -> {
+            star1.setImageResource(R.drawable.ye_star);
+            star2.setImageResource(R.drawable.ye_star);
+            star3.setImageResource(R.drawable.ye_star);
+            star4.setImageResource(R.drawable.ye_star);
+            star5.setImageResource(R.drawable.ye_star);
+
+        });
+        int[] counter = {0};
+        heart.setOnClickListener(v -> {
+         counter[0]++;
+            if (counter[0] % 2 == 0) {
+                heart.setImageResource(R.drawable.black_heart);
+            } else {
+                heart.setImageResource(R.drawable.red_heart);
+            }
+
+        });
+        btnSave.setOnClickListener(v -> {
+            if (counter[0] % 2 != 0) {
+                SharedPreferences prefs = getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+                int userId = prefs.getInt("user_id", -1);
+                long result = dbHelper.addFavorite(userId, currentMovieId);
+
+                if (result != -1) {
+                    Toast.makeText(this, "Added to favorites!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Failed to add favorite.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
+
+
+// stb.
+
+
+
+
 
         btnSearch.setOnClickListener(v -> {
             String title = etMovie.getText().toString().trim();
@@ -73,7 +159,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
-    private void fetchMovieData(String title) {
+    public void fetchMovieData(String title) {
         String url = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=" + title;
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -84,6 +170,7 @@ public class MainActivity2 extends AppCompatActivity {
                         JSONArray results = response.getJSONArray("results");
                         if (results.length() > 0) {
                             JSONObject movie = results.getJSONObject(0);
+                            currentMovieId = movie.getInt("id");
 
                             String movieTitle = movie.getString("title");
                             String overview = movie.getString("overview");

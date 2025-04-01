@@ -72,6 +72,77 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <LinearLayout
+            android:id="@+id/imageRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- 5 kis ikon egymás mellett -->
+            <ImageView
+                android:id="@+id/star1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/black_star"
+                android:contentDescription="Small image 1"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <ImageView
+                android:id="@+id/star2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/black_star"
+                android:contentDescription="Small image 2"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <ImageView
+                android:id="@+id/star3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/black_star"
+                android:contentDescription="Small image 3"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <ImageView
+                android:id="@+id/star4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/black_star"
+                android:contentDescription="Small image 4"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <ImageView
+                android:id="@+id/star5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/black_star"
+                android:contentDescription="Small image 5"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <!-- 6. kép külön térközzel -->
+            <ImageView
+                android:id="@+id/heart"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:src="@drawable/black_heart"
+                android:contentDescription="Small image 6"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

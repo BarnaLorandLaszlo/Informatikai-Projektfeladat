@@ -12,9 +12,16 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
 
     // Adatbázis konstansok
     private static final String DATABASE_NAME = "user_database.db";
-    private static final int DATABASE_VERSION = 1;
+    //private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
+
     // JELSZÓ HASH FUNKCIÓ (SHA-256)
 
+    @Override
+    public void onConfigure(SQLiteDatabase db) {
+        super.onConfigure(db);
+        db.setForeignKeyConstraintsEnabled(true);
+    }
     //hash password
     private String hashPassword(String password) {
         try {
@@ -75,8 +82,11 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
-        onCreate(db);
+      //  db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+       // onCreate(db);
+        if (oldVersion < 2) {
+            db.execSQL(CREATE_TABLE_FAVORITES); // csak akkor hozza létre, ha korábban nem volt
+        }
     }
 
     // Felhasználó hozzáadása
