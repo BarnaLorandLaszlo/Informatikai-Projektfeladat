@@ -5,13 +5,30 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class UserDatabaseHelper extends SQLiteOpenHelper {
 
     // Adatbázis konstansok
     private static final String DATABASE_NAME = "user_database.db";
     private static final int DATABASE_VERSION = 1;
+    // JELSZÓ HASH FUNKCIÓ (SHA-256)
 
+    //hash password
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                hexString.append(String.format("%02x", b));
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("SHA-256 algoritmus nem érhető el", e);
+        }
+    }
     // Kedvencek tábla
     private static final String TABLE_FAVORITES = "favorites";
     private static final String CREATE_TABLE_FAVORITES =
@@ -69,7 +86,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_USERNAME, username);
         values.put(COLUMN_FIRST_NAME, firstName);
         values.put(COLUMN_LAST_NAME, lastName);
-        values.put(COLUMN_PASSWORD, password);
+        values.put(COLUMN_PASSWORD, hashPassword(password));
         values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_REGISTRATION_DATE, registrationDate);
         values.put(COLUMN_BIRTH_DATE, birthDate);
