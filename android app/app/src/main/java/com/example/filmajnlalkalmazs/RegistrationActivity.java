@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,6 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
         birthDateEditText = findViewById(R.id.DateText);
         registerButton = findViewById(R.id.RegistrationB);
         alreadyAccountText = findViewById(R.id.AlreadyA);
+        ImageView backArrow = findViewById(R.id.backArrow);
 
         // REGISZTRÁCIÓ GOMB
         registerButton.setOnClickListener(v -> {
@@ -69,6 +72,11 @@ public class RegistrationActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Hiba történt a regisztráció során.", Toast.LENGTH_SHORT).show();
             }
+        });
+        backArrow.setOnClickListener(v -> {
+
+            startActivity(new Intent(RegistrationActivity.this, NavigationActivity.class));
+
         });
 
         // "Already have an account?" szöveg esemény

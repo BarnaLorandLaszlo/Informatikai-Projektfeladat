@@ -67,7 +67,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
         btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity2.this, NavigationActivity.class);
+            Intent intent = new Intent(MainActivity2.this, WelcomeNavigationActivity.class);
             startActivity(intent);
             finish(); // opcionális, ha nem akarod, hogy vissza lehessen jönni a back gombbal
         });

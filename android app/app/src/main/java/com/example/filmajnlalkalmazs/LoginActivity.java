@@ -7,6 +7,9 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +17,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.content.SharedPreferences;
+import com.example.filmajnlalkalmazs.WelcomeNavigationActivity;
 
 
 import com.example.filmajnlalkalmazs.database.UserDatabaseHelper;
@@ -36,6 +40,9 @@ public class LoginActivity extends AppCompatActivity {
         // UI elemek
         usernameEditText = findViewById(R.id.editTextUsername);
         passwordEditText = findViewById(R.id.editTextPassword);
+        TextView registerText = findViewById(R.id.textView);
+
+        ImageView topLeftArrow = findViewById(R.id.topLeftArrow);
         Button loginButton = findViewById(R.id.button2);
 
         // Insets beállítás
@@ -48,6 +55,17 @@ public class LoginActivity extends AppCompatActivity {
         // Adatbázis példány
         dbHelper = new UserDatabaseHelper(this);
 
+        // back arrow esemény
+        topLeftArrow.setOnClickListener(v -> {
+
+            startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+
+        });
+        // Dont have acount felirat esemény
+        registerText.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+            startActivity(intent);
+        });
         // Gomb esemény
         loginButton.setOnClickListener(v -> {
             String username = usernameEditText.getText().toString().trim();
@@ -67,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                     // adatbázisból értékek megadása válzotóknak, majd elmetése SharedPreferences-be (kilépés után is megmarad az érték)
 
                     int userId = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                    String username2 = cursor.getString(cursor.getColumnIndexOrThrow("username"));
                     String firstName = cursor.getString(cursor.getColumnIndexOrThrow("first_name"));
                     String lastName = cursor.getString(cursor.getColumnIndexOrThrow("last_name"));
                     String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
@@ -76,14 +95,15 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putInt("user_id", userId); // például ID
-                    editor.putString("username", firstName);
+                    editor.putString("firstname", firstName );
+                    editor.putString("username", username2);
                     editor.putString("lastname", lastName );
                     editor.putString("email", email );
                     editor.putString("registrationDate", registrationDate );
                     editor.putString("birthDate", birthDate );
                     editor.apply();
 
-                    startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+                    startActivity(new Intent(LoginActivity.this, WelcomeNavigationActivity.class));
                     // startActivity(new Intent(this, HomeActivity.class));
                 } else {
                     Toast.makeText(this, "Hibás jelszó!", Toast.LENGTH_SHORT).show();

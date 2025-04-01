@@ -57,24 +57,9 @@
             android:textColor="#FFFFFF"
             android:layout_marginBottom="12dp" />
 
-        <Button
-            android:id="@+id/btnRegistration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Keresés"
-            android:backgroundTint="#3F51B5"
-            android:textColor="#FFFFFF" />
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Szia Barna Loránd László"
-        android:textSize="16sp"
-        android:textColor="#555555"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="12dp" />
 
 </LinearLayout>
 

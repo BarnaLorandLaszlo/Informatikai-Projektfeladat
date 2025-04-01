@@ -21,7 +21,7 @@ public class NavigationActivity extends AppCompatActivity {
         // Gombok
         Button btnLogin = findViewById(R.id.btnLogin);
         Button btnMain2 = findViewById(R.id.btnMain2);
-        Button btnRegistration = findViewById(R.id.btnRegistration);
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,15 +37,10 @@ public class NavigationActivity extends AppCompatActivity {
             }
         });
 
-        btnRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(NavigationActivity.this, MainActivity2.class));
-            }
-        });
+
 
         // 🔁 Egyszeri manuális felhasználó beszúrás
-        UserDatabaseHelper dbHelper = new UserDatabaseHelper(this);
+        /*UserDatabaseHelper dbHelper = new UserDatabaseHelper(this);
         Cursor cursor = dbHelper.getUserByUsername("barna123");
 
         if (cursor != null && cursor.getCount() == 0) {
@@ -59,6 +54,7 @@ public class NavigationActivity extends AppCompatActivity {
                     "2000-05-01"
             );
 
+
             if (result != -1) {
                 Toast.makeText(this, "Felhasználó hozzáadva: barna123", Toast.LENGTH_SHORT).show();
             } else {
@@ -68,7 +64,8 @@ public class NavigationActivity extends AppCompatActivity {
             Toast.makeText(this, "Felhasználó már létezik", Toast.LENGTH_SHORT).show();
         }
 
-        if (cursor != null) cursor.close();
+        if (cursor != null) cursor.close(); *í/
+         */
     }
 }
 
