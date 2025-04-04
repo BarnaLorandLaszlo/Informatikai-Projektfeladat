@@ -33,12 +33,26 @@ import org.json.JSONObject;
 
 public class MainActivity2 extends AppCompatActivity {
 
+    int userId;
+    int[] counter = {0};
+
+    int  reviews = 0;
     EditText etMovie;
     Button btnSearch;
     TextView tvTitle, tvOverview, tvReleaseDate, tvRating;
     ImageView ivPoster;
+    ImageView star1;
+    ImageView star2;
+    ImageView star3;
+    ImageView star4;
+    ImageView star5;
+    ImageView heart;
+    Button btnSave;
+    Button btnBack;
+    String reviewText = "";
     private int currentMovieId = -1;
     private final String API_KEY = "c412675515f5ce72a5bbbd49cec4c943";
+    UserDatabaseHelper dbHelper = new UserDatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +60,7 @@ public class MainActivity2 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main2);
 
-        UserDatabaseHelper dbHelper = new UserDatabaseHelper(this);
+
         // EdgeToEdge padding
         View rootView = findViewById(R.id.main); // FONTOS: root layout ID legyen "main"
         if (rootView != null) {
@@ -65,21 +79,44 @@ public class MainActivity2 extends AppCompatActivity {
         tvReleaseDate = findViewById(R.id.tvReleaseDate);
         tvRating = findViewById(R.id.tvRating);
         ivPoster = findViewById(R.id.ivPoster);
-        Button btnSave = findViewById(R.id.btnSave);
-        Button btnBack = findViewById(R.id.btnBack);
-        ImageView star1 = findViewById(R.id.star1);
-        ImageView star2 = findViewById(R.id.star2);
-        ImageView star3 = findViewById(R.id.star3);
-        ImageView star4 = findViewById(R.id.star4);
-        ImageView star5 = findViewById(R.id.star5);
-        ImageView heart = findViewById(R.id.heart);
-
+        btnSave = findViewById(R.id.btnSave);
+        btnBack = findViewById(R.id.btnBack);
+        star1 = findViewById(R.id.star1);
+        star2 = findViewById(R.id.star2);
+        star3 = findViewById(R.id.star3);
+        star4 = findViewById(R.id.star4);
+        star5 = findViewById(R.id.star5);
+        heart = findViewById(R.id.heart);
+        tvTitle.setText("Nincs találat.");
         star1.setOnClickListener(v -> {
             star1.setImageResource(R.drawable.ye_star);
             star2.setImageResource(R.drawable.black_star);
             star3.setImageResource(R.drawable.black_star);
             star4.setImageResource(R.drawable.black_star);
             star5.setImageResource(R.drawable.black_star);
+            reviews = 1;
+
+            if (dbHelper.reviewExists(userId, currentMovieId)) {
+                // Már van ilyen értékelés → frissítjük
+                int rows = dbHelper.updateReview(userId, currentMovieId, reviews, reviewText);
+                if (rows > 0) {
+                    Toast.makeText(this, "Értékelés frissítve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Nem sikerült frissíteni az értékelést.", Toast.LENGTH_SHORT).show();
+                }
+            } else if (userId != -1) {
+
+
+                long result = dbHelper.addReview(userId, currentMovieId, reviews, reviewText);
+
+                if (result != -1) {
+                    Toast.makeText(this, "Vélemény elmentve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Hiba történt a mentés során.", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Nem vagy bejelentkezve!", Toast.LENGTH_SHORT).show();
+            }
 
         });
         star2.setOnClickListener(v -> {
@@ -88,6 +125,28 @@ public class MainActivity2 extends AppCompatActivity {
             star3.setImageResource(R.drawable.black_star);
             star4.setImageResource(R.drawable.black_star);
             star5.setImageResource(R.drawable.black_star);
+            reviews = 2;
+            if (dbHelper.reviewExists(userId, currentMovieId)) {
+                // Már van ilyen értékelés → frissítjük
+                int rows = dbHelper.updateReview(userId, currentMovieId, reviews, reviewText);
+                if (rows > 0) {
+                    Toast.makeText(this, "Értékelés frissítve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Nem sikerült frissíteni az értékelést.", Toast.LENGTH_SHORT).show();
+                }
+            } else if (userId != -1) {
+
+
+                long result = dbHelper.addReview(userId, currentMovieId, reviews, reviewText);
+
+                if (result != -1) {
+                    Toast.makeText(this, "Vélemény elmentve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Hiba történt a mentés során.", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Nem vagy bejelentkezve!", Toast.LENGTH_SHORT).show();
+            }
 
         });
         star3.setOnClickListener(v -> {
@@ -96,6 +155,28 @@ public class MainActivity2 extends AppCompatActivity {
             star3.setImageResource(R.drawable.ye_star);
             star4.setImageResource(R.drawable.black_star);
             star5.setImageResource(R.drawable.black_star);
+            reviews = 3;
+            if (dbHelper.reviewExists(userId, currentMovieId)) {
+                // Már van ilyen értékelés → frissítjük
+                int rows = dbHelper.updateReview(userId, currentMovieId, reviews, reviewText);
+                if (rows > 0) {
+                    Toast.makeText(this, "Értékelés frissítve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Nem sikerült frissíteni az értékelést.", Toast.LENGTH_SHORT).show();
+                }
+            } else if (userId != -1) {
+
+
+                long result = dbHelper.addReview(userId, currentMovieId, reviews, reviewText);
+
+                if (result != -1) {
+                    Toast.makeText(this, "Vélemény elmentve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Hiba történt a mentés során.", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Nem vagy bejelentkezve!", Toast.LENGTH_SHORT).show();
+            }
 
         });
         star4.setOnClickListener(v -> {
@@ -104,7 +185,28 @@ public class MainActivity2 extends AppCompatActivity {
             star3.setImageResource(R.drawable.ye_star);
             star4.setImageResource(R.drawable.ye_star);
             star5.setImageResource(R.drawable.black_star);
+            reviews = 4;
+            if (dbHelper.reviewExists(userId, currentMovieId)) {
+                // Már van ilyen értékelés → frissítjük
+                int rows = dbHelper.updateReview(userId, currentMovieId, reviews, reviewText);
+                if (rows > 0) {
+                    Toast.makeText(this, "Értékelés frissítve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Nem sikerült frissíteni az értékelést.", Toast.LENGTH_SHORT).show();
+                }
+            } else if (userId != -1) {
 
+
+                long result = dbHelper.addReview(userId, currentMovieId, reviews, reviewText);
+
+                if (result != -1) {
+                    Toast.makeText(this, "Vélemény elmentve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Hiba történt a mentés során.", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Nem vagy bejelentkezve!", Toast.LENGTH_SHORT).show();
+            }
         });
         star5.setOnClickListener(v -> {
             star1.setImageResource(R.drawable.ye_star);
@@ -112,9 +214,33 @@ public class MainActivity2 extends AppCompatActivity {
             star3.setImageResource(R.drawable.ye_star);
             star4.setImageResource(R.drawable.ye_star);
             star5.setImageResource(R.drawable.ye_star);
+            reviews = 5;
+            if (dbHelper.reviewExists(userId, currentMovieId)) {
+                // Már van ilyen értékelés → frissítjük
+                int rows = dbHelper.updateReview(userId, currentMovieId, reviews, reviewText);
+                if (rows > 0) {
+                    Toast.makeText(this, "Értékelés frissítve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Nem sikerült frissíteni az értékelést.", Toast.LENGTH_SHORT).show();
+                }
+            } else if (userId != -1) {
 
+
+                long result = dbHelper.addReview(userId, currentMovieId, reviews, reviewText);
+
+                if (result != -1) {
+                    Toast.makeText(this, "Vélemény elmentve!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Hiba történt a mentés során.", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Nem vagy bejelentkezve!", Toast.LENGTH_SHORT).show();
+            }
         });
-        int[] counter = {0};
+       // int[] counter = {0};
+        SharedPreferences prefs = getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+        userId = prefs.getInt("user_id", -1);
+
         heart.setOnClickListener(v -> {
          counter[0]++;
             if (counter[0] % 2 == 0) {
@@ -122,22 +248,37 @@ public class MainActivity2 extends AppCompatActivity {
             } else {
                 heart.setImageResource(R.drawable.red_heart);
             }
+            
 
         });
         btnSave.setOnClickListener(v -> {
             if (counter[0] % 2 != 0) {
-                SharedPreferences prefs = getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-                int userId = prefs.getInt("user_id", -1);
-                long result = dbHelper.addFavorite(userId, currentMovieId);
 
-                if (result != -1) {
-                    Toast.makeText(this, "Added to favorites!", Toast.LENGTH_SHORT).show();
+
+                // Csak akkor szúrja be, ha még nem létezik
+                if (!dbHelper.checkFavoriteExists(userId, currentMovieId) && !tvTitle.getText().toString().equals("Nincs találat.")) {
+                    long result = dbHelper.addFavorite(userId, currentMovieId);
+                    if (result != -1) {
+                        Toast.makeText(this, "Added to favorites!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Failed to add favorite.", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(this, "Failed to add favorite.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "This movie is already in your favorites.", Toast.LENGTH_SHORT).show();
                 }
+            } else if (dbHelper.checkFavoriteExists(userId, currentMovieId)) {
+                boolean removed = dbHelper.removeFavorite(userId, currentMovieId);
+                if (removed) {
+                    Toast.makeText(this, "Removed from favorites!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Failed to remove/add favorite.", Toast.LENGTH_SHORT).show();
+                }
+            } else if (tvTitle.getText().toString().equals("Nincs találat.")) {
+                Toast.makeText(this, "Failed to remove favorite.", Toast.LENGTH_SHORT).show();
             }
 
         });
+
 
 
 // stb.
@@ -183,6 +324,11 @@ public class MainActivity2 extends AppCompatActivity {
                             tvOverview.setText("Leírás:\n" + overview);
                             tvReleaseDate.setText("Megjelenés: " + releaseDate);
                             tvRating.setText("Értékelés: " + rating + "/10");
+                            if(dbHelper.checkFavoriteExists(userId, currentMovieId))
+                            {
+                                heart.setImageResource(R.drawable.red_heart);
+                                counter[0]++;
+                            }
 
                             Glide.with(this).load(fullPosterUrl).into(ivPoster);
                         } else {
