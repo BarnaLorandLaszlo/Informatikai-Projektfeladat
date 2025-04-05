@@ -85,6 +85,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <Button
             android:id="@+id/button2"
             android:layout_width="100dp"
@@ -93,16 +94,20 @@
             android:layout_marginTop="540dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#A4B1C3"
+            android:background="@drawable/text_field_background"
+            android:backgroundTint="#D6DFEB"
             android:text="Login"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textSize="16sp"
+            android:textColor="#1A475F"
+            android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.476" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -123,16 +128,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="640dp"
+            android:clickable="true"
+            android:focusable="true"
             android:text="Don't have an account? Create one"
             android:textColor="#2B6D90"
             android:textColorLink="#7B8080"
-            android:textSize="20sp"
-            android:clickable="true"
-            android:focusable="true"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.432" />
+
         <ImageView
             android:id="@+id/topLeftArrow"
             android:layout_width="48dp"
@@ -146,9 +154,6 @@
             android:focusable="true"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
