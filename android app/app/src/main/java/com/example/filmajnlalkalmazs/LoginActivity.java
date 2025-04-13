@@ -17,7 +17,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.content.SharedPreferences;
-import com.example.filmajnlalkalmazs.WelcomeNavigationActivity;
 
 
 import com.example.filmajnlalkalmazs.database.UserDatabaseHelper;
@@ -103,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("birthDate", birthDate );
                     editor.apply();
 
-                    startActivity(new Intent(LoginActivity.this, WelcomeNavigationActivity.class));
+                    startActivity(new Intent(LoginActivity.this, TabActivity.class));
                     // startActivity(new Intent(this, HomeActivity.class));
                 } else {
                     Toast.makeText(this, "Hibás jelszó!", Toast.LENGTH_SHORT).show();
