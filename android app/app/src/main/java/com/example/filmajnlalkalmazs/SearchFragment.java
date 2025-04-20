@@ -63,7 +63,7 @@ public class SearchFragment extends Fragment {
         tvRating = view.findViewById(R.id.tvRating);
         ivPoster = view.findViewById(R.id.ivPoster);
         btnSave = view.findViewById(R.id.btnSave);
-        btnBack = view.findViewById(R.id.btnBack);
+
         star1 = view.findViewById(R.id.star1);
         star2 = view.findViewById(R.id.star2);
         star3 = view.findViewById(R.id.star3);
@@ -106,7 +106,7 @@ public class SearchFragment extends Fragment {
             }
         });
 
-        btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
+
     }
 
     private void setStarListeners() {

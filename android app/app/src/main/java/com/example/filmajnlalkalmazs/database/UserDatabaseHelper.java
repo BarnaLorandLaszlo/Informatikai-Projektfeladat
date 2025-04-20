@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDatabaseHelper extends SQLiteOpenHelper {
 
@@ -194,6 +196,43 @@ public boolean reviewExists(int userId, int movieId) {
                 new String[]{String.valueOf(userId), String.valueOf(movieId)});
         return rowsAffected > 0;
     }
+    public List<Integer> getFavoriteMovieIds(int userId) {
+        List<Integer> ids = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(
+                "SELECT movie_id FROM favorites WHERE user_id = ?",
+                new String[]{String.valueOf(userId)}
+        );
+        if (cursor.moveToFirst()) {
+            do {
+                ids.add(cursor.getInt(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return ids;
+    }
+    public List<Integer> getReviewedMovieIds(int userId) {
+        List<Integer> ids = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(
+                "SELECT movie_id FROM reviews WHERE user_id = ?",
+                new String[]{String.valueOf(userId)}
+        );
+        if (cursor.moveToFirst()) {
+            do {
+                ids.add(cursor.getInt(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return ids;
+    }
+
+
+
+
+
 
 
 }

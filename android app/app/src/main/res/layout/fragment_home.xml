@@ -1,14 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    android:background="#FFFFFF">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <!-- Üdvözlő rész -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/black_border_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/imageUser"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/sigmaboy"
+                android:layout_marginEnd="16dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/textWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Üdv, Felhasználó!"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <!-- Kedvenc filmek -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Favorites"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:textColor="#1A1A1A" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPopularMovies"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
+
+        <!-- Értékelt filmek -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Reviewed Movies"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:textColor="#1A1A1A" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRecommendedMovies"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:clipToPadding="false" />
+        <!-- Movie Recommendation felirat -->
+        <TextView
+            android:id="@+id/textMovieRecommendation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Movie Recommendation"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#1A1A1A"
+            android:gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Ajánlott film képe – kisebb szélességgel -->
+        <ImageView
+            android:id="@+id/imageRecommendation"
+            android:layout_width="130dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:background="@drawable/black_border_bg"
+            android:scaleType="centerCrop"
+            android:contentDescription="Recommended movie"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Dobókocka ikon -->
+        <ImageView
+            android:id="@+id/imageDice"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:src="@drawable/dice"
+            android:contentDescription="Roll dice"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>
+
