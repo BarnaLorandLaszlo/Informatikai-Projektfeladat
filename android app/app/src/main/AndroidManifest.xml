@@ -34,19 +34,18 @@
         <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity android:name=".WatchlistActivity" />
+
+
         <!--
   <activity
               android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
         -->
-        <activity
-            android:name=".MainActivity2"
-            android:exported="true"
-            android:theme="@style/Theme.FilmAjánlóAlkalmazás2"></activity>
-        <activity
-            android:name=".WelcomeNavigationActivity"
-            android:exported="false" />
-    </application>
+            </application>
 
 </manifest>

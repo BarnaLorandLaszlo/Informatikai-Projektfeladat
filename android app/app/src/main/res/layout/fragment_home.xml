@@ -91,7 +91,7 @@
         <!-- Ajánlott film képe – kisebb szélességgel -->
         <ImageView
             android:id="@+id/imageRecommendation"
-            android:layout_width="130dp"
+            android:layout_width="250dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:background="@drawable/black_border_bg"
@@ -100,16 +100,42 @@
             android:layout_marginBottom="16dp" />
 
         <!-- Dobókocka ikon -->
-        <ImageView
-            android:id="@+id/imageDice"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:src="@drawable/dice"
-            android:contentDescription="Roll dice"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_marginBottom="24dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/imageDice"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/dice"
+                android:contentDescription="Roll a movie"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp" />
+
+            <ImageView
+                android:id="@+id/imageCheck"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/checkmark"
+                android:contentDescription="Add to watchlist"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnOpenWatchlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Watchlist"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"/>
+
+
+
 
     </LinearLayout>
 </ScrollView>

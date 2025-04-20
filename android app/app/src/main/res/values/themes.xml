@@ -4,5 +4,7 @@
     <style name="Theme.FilmAjánlóAlkalmazás" parent="android:Theme.Material.Light.NoActionBar" />
 
     <style name="Theme.FilmAjánlóAlkalmazás2" parent="Theme.AppCompat.Light.NoActionBar" />
+    w
+
 
 </resources>
