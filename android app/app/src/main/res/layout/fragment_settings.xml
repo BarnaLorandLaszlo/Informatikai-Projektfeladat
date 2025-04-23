@@ -7,111 +7,133 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:background="#FFFFFF">
+        android:background="#BFC7CE"
+        android:padding="16dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <!-- APPEARANCE -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="Appearance"
-                android:textStyle="bold"
+                android:textColor="#1A475F"
                 android:textSize="18sp"
-                android:layout_marginBottom="8dp" />
+                android:textStyle="bold" />
 
             <Switch
                 android:id="@+id/switchTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dark Mode" />
+                android:text="Dark Mode"
+                android:textColor="#1A475F"
+                android:textSize="16sp" />
 
             <!-- PROFILE -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textStyle="bold"
-                android:textSize="18sp"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:text="Profile"
+                android:textColor="#1A475F"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnChangeName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Change Name" />
+                android:backgroundTint="#e9e9e9"
+                android:text="Change Name"
+                android:textAllCaps="false"
+                android:textColor="#1A475F"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnChangeProfilePicture"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#e9e9e9"
                 android:text="Change Profile Picture"
-                android:layout_marginTop="8dp" />
+                android:textAllCaps="false"
+                android:textColor="#1A475F"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Log Out"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="#DD4444"
+                android:backgroundTint="#3F7692"
+                android:text="Log Out"
                 android:textColor="#FFFFFF" />
 
             <!-- DATA -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data Management"
-                android:textStyle="bold"
-                android:textSize="18sp"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:text="Data Management"
+                android:textColor="#1A475F"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnClearFavorites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Clear Favorites" />
+                android:backgroundTint="#e9e9e9"
+                android:text="Clear Favorites"
+                android:textAllCaps="false"
+                android:textColor="#1A475F"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnClearReviews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#e9e9e9"
                 android:text="Clear Reviews"
-                android:layout_marginTop="8dp" />
+                android:textAllCaps="false"
+                android:textColor="#1A475F"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btnClearAll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Clear All Data"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="#BB0000"
+                android:backgroundTint="#275873"
+                android:text="Clear All Data"
                 android:textColor="#FFFFFF" />
 
             <!-- ACCOUNT DEACTIVATION -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Account"
-                android:textStyle="bold"
-                android:textSize="18sp"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:text="Account"
+                android:textColor="#1A475F"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnDeleteAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="#1A3C4E"
                 android:text="Delete Account"
-                android:backgroundTint="#880000"
-                android:textColor="#FFFFFF"
-                android:layout_marginBottom="32dp"/>
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
